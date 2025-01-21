@@ -15,21 +15,11 @@ import Title   from './components/Title.jsx';
 import Todo    from './components/Todo.jsx';
 import Modal   from './components/Modal.jsx';
 // import Counter from './components/Counter.jsx';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 
 function App(){
 
-
-  // return (
-  
-  //   <>
-    
-  //     <Counter 
-
-  //     />
-  //   </>
-  // );
 
   const [showModal, setShowModal] = useState(false);
 
@@ -48,6 +38,24 @@ function App(){
     setShowModal(false);
     console.log('confirmModal()');
   }
+
+//-----------------------------------------------------------------------------------------
+
+  // Proper placement of useEffect is after functions //
+
+  // useEffect(() => {console.log('Only on mount')}, []); // <--ONLY-ON-MOUNT--< //
+
+  // useEffect(() => {
+
+  //   console.log(`On mount AND on ${showModal} change`);
+
+  //   // setShowModal(!showModal); // <--INFINITE-LOOP--< //
+
+  // }, [showModal]);
+
+  // useEffect(() => {console.log('EVERY Render')});
+
+//-----------------------------------------------------------------------------------------
 
   return (
 
