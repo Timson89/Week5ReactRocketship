@@ -7,17 +7,17 @@
 import './Modal.css';
 
 
-function Modal(){
+function Modal({ title, cancel, confirm }){
 
   return (
 
     <>
-    
+
       <div className="modal">
-        <p className="modal__title">Are you sure?</p>
+        <p className="modal__title">{(title)}</p>
         <div className="modal__buttons">
-          <button className="btn btn__cancel">Cancel</button>
-          <button className="btn">Confirm</button>
+          <button className="btn btn__cancel">{(cancel)}</button>
+          <button className="btn">{(confirm)}</button>
         </div>
       </div>
       <div className="backdrop" />
