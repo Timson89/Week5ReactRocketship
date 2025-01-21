@@ -16,8 +16,8 @@ function Modal({ title, cancel, confirm }){
       <div className="modal">
         <p className="modal__title">{(title)}</p>
         <div className="modal__buttons">
-          <button className="btn btn__cancel">{(cancel)}</button>
-          <button className="btn">{(confirm)}</button>
+          <button onClick={() => console.log('cancel')}  className="btn btn__cancel">{(cancel)}</button>
+          <button onClick={() => console.log('confirm')} className="btn">{(confirm)}</button>
         </div>
       </div>
       <div className="backdrop" />
