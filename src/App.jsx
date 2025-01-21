@@ -11,13 +11,43 @@ January 20th, 2025
 // import viteLogo from '/vite.svg';
 
 import './App.css';
-
-import Title from './components/Title.jsx';
-import Todo  from './components/Todo.jsx';
-import Modal from './components/Modal.jsx';
+import Title   from './components/Title.jsx';
+import Todo    from './components/Todo.jsx';
+import Modal   from './components/Modal.jsx';
+// import Counter from './components/Counter.jsx';
+import React, { useState } from 'react';
 
 
 function App(){
+
+
+  // return (
+  
+  //   <>
+    
+  //     <Counter 
+
+  //     />
+  //   </>
+  // );
+
+  const [showModal, setShowModal] = useState(false);
+
+  function onTodoDelete(){
+
+    setShowModal(true);
+    console.log('onTodoDelete()');
+  }
+  function cancelModal(){
+        
+    setShowModal(false);
+    console.log('cancelModal()');
+  }
+  function confirmModal(){
+
+    setShowModal(false);
+    console.log('confirmModal()');
+  }
 
   return (
 
@@ -25,25 +55,26 @@ function App(){
 
       <Title />
 
-      <input type="text" onChange={(event) => {
+      <input id='text' type="text" onChange={(event) => {
 
         console.log(event.target.value);
       }} />
 
-      <button>Add Todo</button>
+      <button onClick={() => setShowModal(true)}>Add Todo</button>
 
       <div className = 'todo__wrapper'>
-        <Todo title = 'Finished Frontend Simplified'/>
-        <Todo title = 'Finished Interview Section'/>
-        <Todo title = 'Land A $100k Job'/>
+        <Todo onTodoDelete={onTodoDelete} title = 'Finished Frontend Simplified'/>
+        <Todo onTodoDelete={onTodoDelete} title = 'Finished Interview Section'/>
+        <Todo onTodoDelete={onTodoDelete} title = 'Land A $100k Job'/>
       </div>
 
       { /* Modal Function Here */ }
 
-      <Modal title   = 'Are you sure?'
-             cancel  = 'Cancel'
-             confirm = 'Confirm'
-      />
+      { showModal && <Modal title   = 'Confirm Delete?'
+                            cancel  = 'Cancel'  cancelModal  = {cancelModal}
+                            confirm = 'Confirm' confirmModal = {confirmModal}
+
+      /> }
     </>
   );
 }
