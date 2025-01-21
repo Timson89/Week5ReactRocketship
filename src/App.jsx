@@ -32,14 +32,12 @@ function App(){
     <>
 
       <Router>
-        <Nav />
+        {/* <Nav /> */}
         <Routes>
           <Route path='/'           element={ <Home /> } />
-
           {/* <Route path='/About'   element={ <About /> } /> */}
           {/* <Route path='/Contact' element={ <Contact /> } /> */}
-
-          <Route path='/Users/:userID' element={ <Users /> } />
+          <Route path='/Users/:id' element={ <Users /> } />
         </Routes>
       </Router>
     </>

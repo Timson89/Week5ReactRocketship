@@ -6,18 +6,39 @@ January 20th, 2025
 */ }
 
 
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import axios from 'axios';
+import { Link } from 'react-router-dom';
     
     
-    function Users(){
+function Users(){
 
-      const { userID } = useParams();
+  const { id } = useParams();
+  const [user, setUser] = useState({});
 
-      useEffect(()=> { fetch(`http://localhost:5173/Users/${userID}`) }, []);
-      
-      console.log(userID);
-    
-      return <h1>{userID}</h1>
-    }
-    export default Users;
+  async function axiosUserData() {
+
+    const { data } = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`);
+    setUser(data);
+    // console.log(data);
+  }
+
+  useEffect(() => { 
+
+    axiosUserData();
+
+  }, []);
+
+  return ( <>
+
+      <Link to='/'>Go back</Link>
+          
+      <p>{ user.id       }</p>
+      <p>{ user.name     }</p>
+      <p>{ user.email    }</p>
+      <p>{ user.username }</p>
+    </>
+  )
+}
+export default Users;
