@@ -11,33 +11,58 @@ January 20th, 2025
 // import viteLogo from '/vite.svg';
 
 import './App.css';
-import Title   from './components/Title.jsx';
-import Todo    from './components/Todo.jsx';
-import Modal   from './components/Modal.jsx';
+// import Title   from './components/Title.jsx';
+// import Todo    from './components/Todo.jsx';
+// import Modal   from './components/Modal.jsx';
 // import Counter from './components/Counter.jsx';
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Home from './pages/Home.jsx';
+// import About from './pages/About.jsx';
+// import Contact from './pages/Contact.jsx';
+import Users from './pages/Users.jsx';
+import Nav from './components/Nav.jsx';
 
 
 function App(){
 
 
-  const [showModal, setShowModal] = useState(false);
+  return (
 
-  function onTodoDelete(){
+    <>
 
-    setShowModal(true);
-    console.log('onTodoDelete()');
-  }
-  function cancelModal(){
+      <Router>
+        <Nav />
+        <Routes>
+          <Route path='/'           element={ <Home /> } />
+
+          {/* <Route path='/About'   element={ <About /> } /> */}
+          {/* <Route path='/Contact' element={ <Contact /> } /> */}
+
+          <Route path='/Users/:userID' element={ <Users /> } />
+        </Routes>
+      </Router>
+    </>
+  );
+
+
+  // const [showModal, setShowModal] = useState(false);
+
+  // function onTodoDelete(){
+
+  //   setShowModal(true);
+  //   console.log('onTodoDelete()');
+  // }
+  // function cancelModal(){
         
-    setShowModal(false);
-    console.log('cancelModal()');
-  }
-  function confirmModal(){
+  //   setShowModal(false);
+  //   console.log('cancelModal()');
+  // }
+  // function confirmModal(){
 
-    setShowModal(false);
-    console.log('confirmModal()');
-  }
+  //   setShowModal(false);
+  //   console.log('confirmModal()');
+  // }
 
 //-----------------------------------------------------------------------------------------
 
@@ -57,33 +82,33 @@ function App(){
 
 //-----------------------------------------------------------------------------------------
 
-  return (
+  // return (
 
-    <>
+  //   <>
 
-      <Title />
+  //     <Title />
 
-      <input id='text' type="text" onChange={(event) => {
+  //     <input id='text' type="text" onChange={(event) => {
 
-        console.log(event.target.value);
-      }} />
+  //       console.log(event.target.value);
+  //     }} />
 
-      <button onClick={() => setShowModal(true)}>Add Todo</button>
+  //     <button onClick={() => setShowModal(true)}>Add Todo</button>
 
-      <div className = 'todo__wrapper'>
-        <Todo onTodoDelete={onTodoDelete} title = 'Finished Frontend Simplified'/>
-        <Todo onTodoDelete={onTodoDelete} title = 'Finished Interview Section'/>
-        <Todo onTodoDelete={onTodoDelete} title = 'Land A $100k Job'/>
-      </div>
+  //     <div className = 'todo__wrapper'>
+  //       <Todo onTodoDelete={onTodoDelete} title = 'Finished Frontend Simplified'/>
+  //       <Todo onTodoDelete={onTodoDelete} title = 'Finished Interview Section'/>
+  //       <Todo onTodoDelete={onTodoDelete} title = 'Land A $100k Job'/>
+  //     </div>
 
-      { /* Modal Function Here */ }
+  //     { /* Modal Function Here */ }
 
-      { showModal && <Modal title   = 'Confirm Delete?'
-                            cancel  = 'Cancel'  cancelModal  = {cancelModal}
-                            confirm = 'Confirm' confirmModal = {confirmModal}
+  //     { showModal && <Modal title   = 'Confirm Delete?'
+  //                           cancel  = 'Cancel'  cancelModal  = {cancelModal}
+  //                           confirm = 'Confirm' confirmModal = {confirmModal}
 
-      /> }
-    </>
-  );
+  //     /> }
+  //   </>
+  // );
 }
 export default App;
