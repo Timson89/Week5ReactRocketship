@@ -1,0 +1,13 @@
+/* 
+Timothy Olofson
+Week 5 React Rocketship(Vite)
+Frontend Simplified
+January 20th, 2025
+*/
+
+
+.todo {
+  width: calc(100% / 3);
+  border: solid 1px black;
+  padding: 16px;
+}
